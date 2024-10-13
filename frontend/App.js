@@ -10,6 +10,7 @@ import { Image } from "react-native";
 
 // Create a bottom tab navigator
 const Tab = createBottomTabNavigator();
+const testVar = 1;
 export default function App() {
   return (
     <NavigationContainer>
