@@ -6,7 +6,7 @@ const MainBoard = () => {
     <View style={styles.mainBoardContainer}>
       <View style={styles.backgroundBrightShadow} />
       <Image
-        source={require("../images/fireLogo.png")}
+        source={require("../assets/images/fireLogo.png")}
         style={styles.mainBoardImage}
       />
       <Text style={styles.mainBoardText}>104 days</Text>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "react-native-vector-icons/MaterialIcons";
@@ -7,11 +7,24 @@ import AccountScreen from "./screens/AccountScreen";
 import SettingsScreen from "./screens/SettingsScreen";
 import ExploreScreen from "./screens/ExploreScreen";
 import { Image } from "react-native";
+import * as Font from "expo-font"; // Import expo-font to load custom fonts
 
 // Create a bottom tab navigator
 const Tab = createBottomTabNavigator();
-const testVar = 1;
 export default function App() {
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+  useEffect(() => {
+    const loadFonts = async () => {
+      await Font.loadAsync({
+        Futura: require("./assets/fonts/futura.ttf"),
+      });
+      setFontsLoaded(true);
+    };
+    loadFonts();
+  }, []);
+  if (!fontsLoaded) {
+    return null; // Optionally, you can show a loading spinner here
+  }
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -53,10 +66,13 @@ export default function App() {
           },
           tabBarLabelStyle: {
             fontSize: 12, // Customize font size for tab labels
+            fontFamily: "Futura",
+            fontWeight: 700,
           },
           tabBarIconStyle: {
             marginTop: 6, // Adjust icon positioning if necessary
           },
+          headerShown: false,
         })}
       >
         <Tab.Screen name="Home" component={HomeScreen} />

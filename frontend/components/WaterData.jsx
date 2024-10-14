@@ -20,7 +20,7 @@ const WaterData = ({ name, time_added }) => {
   return (
     <View style={styles.waterDataContainer}>
       <Image
-        source={require("../images/waterCup.png")}
+        source={require("../assets/images/waterCup.png")}
         style={styles.waterDataImage}
       />
       <View style={styles.waterDataTextContainer}>
@@ -36,7 +36,7 @@ const WaterData = ({ name, time_added }) => {
         {isDelete === 1 && (
           <TouchableOpacity onPress={handlePress}>
             <Image
-              source={require("../images/verticalElipsis.png")}
+              source={require("../assets/images/verticalElipsis.png")}
               style={styles.verticalElipsis}
             />
           </TouchableOpacity>
