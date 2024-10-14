@@ -26,6 +26,8 @@ const styles = StyleSheet.create({
     borderWidth: 4,
     position: "relative",
     overflow: "hidden",
+    marginTop: 60,
+    marginBottom: 10,
   },
   backgroundBrightShadow: {
     width: 240,

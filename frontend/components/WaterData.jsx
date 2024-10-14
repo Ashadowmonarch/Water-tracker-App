@@ -4,45 +4,54 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
-  Button,
+  ScrollView,
 } from "react-native";
 import React from "react";
 import DeleteButton from "./DeleteButton";
 import { useState } from "react";
-const WaterData = ({ name, time_added }) => {
-  const [isDelete, setIsDelete] = useState(1);
-  const handlePress = (e) => {
-    setIsDelete(0);
-  };
-  const handlePressOnDeleteButton = () => {
-    setIsDelete(1);
-  };
+import { useAllWater } from "../services/queries";
+const WaterData = () => {
+  const { data, error, isLoading } = useAllWater();
+
   return (
-    <View style={styles.waterDataContainer}>
-      <Image
-        source={require("../assets/images/waterCup.png")}
-        style={styles.waterDataImage}
-      />
-      <View style={styles.waterDataTextContainer}>
-        <Text style={styles.waterDataMainText}>{name}</Text>
-        <Text style={styles.waterDataSideText}>{time_added}</Text>
-      </View>
-      <View>
-        {isDelete === 0 && (
-          <TouchableOpacity style={styles.deleteButtonTouchable}>
-            <DeleteButton IsDelete={isDelete} SetIsDelete={setIsDelete} />
-          </TouchableOpacity>
-        )}
-        {isDelete === 1 && (
-          <TouchableOpacity onPress={handlePress}>
+    <ScrollView style={styles.container}>
+      {isLoading ? (
+        <Text>Loading</Text>
+      ) : error ? (
+        <Text>Error: ${error.message}</Text>
+      ) : data ? (
+        data.map((item, index) => (
+          <View key={index} style={styles.waterDataContainer}>
             <Image
-              source={require("../assets/images/verticalElipsis.png")}
-              style={styles.verticalElipsis}
+              source={require("../assets/images/waterCup.png")}
+              style={styles.waterDataImage}
             />
-          </TouchableOpacity>
-        )}
-      </View>
-    </View>
+            <View style={styles.waterDataTextContainer}>
+              {isLoading && <Text>Loading...</Text>}
+              {error && <Text>Error: {error.message}</Text>}
+              {data && (
+                <View>
+                  <Text style={styles.waterDataMainText}>{item.name}</Text>
+                  <Text style={styles.waterDataSideText}>
+                    {item.time_added}
+                  </Text>
+                </View>
+              )}
+            </View>
+            <View>
+              <TouchableOpacity>
+                <Image
+                  source={require("../assets/images/verticalElipsis.png")}
+                  style={styles.verticalElipsis}
+                />
+              </TouchableOpacity>
+            </View>
+          </View>
+        ))
+      ) : (
+        <Text>No data available</Text>
+      )}
+    </ScrollView>
   );
 };
 
@@ -60,6 +69,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+    marginTop: 16,
   },
   waterDataImage: {
     width: 30,
@@ -84,7 +94,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     position: "absolute",
     top: -20,
-    right: -10,
+    right: -5,
   },
   deleteButtonTouchable: {
     width: 165,
@@ -92,5 +102,9 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: -30,
     right: -20,
+  },
+  scrollContainer: {
+    maxHeight: 450, // Set maximum height for the scrollable area
+    width: "100%", // Adjust the width as necessary
   },
 });
