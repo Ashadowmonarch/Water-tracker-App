@@ -25,16 +25,22 @@ export default function App() {
                 ? require("./assets/images/home_focus.png")
                 : require("./assets/images/home_blank.png");
             } else if (route.name === "Add") {
-              iconName = "add";
+              iconName = focused
+                ? require("./assets/images/add_focus.png")
+                : require("./assets/images/add_blank.png");
             } else if (route.name === "Account") {
-              iconName = "person";
+              iconName = focused
+                ? require("./assets/images/account_focus.png")
+                : require("./assets/images/account_blank.png");
             } else if (route.name === "Settings") {
-              iconName = "settings";
+              iconName = focused
+                ? require("./assets/images/settings_focus.png")
+                : require("./assets/images/settings_blank.png");
             }
 
             // Return the icon component with the chosen icon name
             return (
-              <Image source={iconName} style={{ width: 24, height: 24 }} />
+              <Image source={iconName} style={{ width: 38, height: 38 }} />
             );
           },
           tabBarActiveTintColor: "#001D35", // Active tab color
