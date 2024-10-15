@@ -13,7 +13,7 @@ export default AddScreen;
 
 const styles = StyleSheet.create({
   addScreen: {
-    backgroundColor: "#2272BE",
+    backgroundColor: "#000020",
     flex: 1,
     display: "flex",
     alignItems: "center",
