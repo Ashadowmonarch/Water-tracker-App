@@ -1,12 +1,25 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 import * as Font from "expo-font";
+import { usePostWaterDetail } from "../services/mutations";
 
-const AddButton = () => {
+const AddButton = ({ waterName, setWaterName }) => {
+  const mutation = usePostWaterDetail();
+  const handlePress = () => {
+    mutation.mutate({ name: waterName });
+    setWaterName("");
+  };
   return (
     <View style={styles.addButtonMainContainer}>
-      <TouchableOpacity style={styles.addButton} activeOpacity={0.95}>
-        <Image source={require("../images/addLogo.png")} style={styles.image} />
+      <TouchableOpacity
+        onPress={handlePress}
+        style={styles.addButton}
+        activeOpacity={0.95}
+      >
+        <Image
+          source={require("../assets/images/addLogo.png")}
+          style={styles.image}
+        />
         <Text style={styles.addButtonText}>Add</Text>
       </TouchableOpacity>
       <View style={styles.addButtonShadow} />
@@ -19,6 +32,9 @@ export default AddButton;
 const styles = StyleSheet.create({
   addButtonMainContainer: {
     position: "relative",
+    marginLeft: 200,
+    marginTop: 30,
+    marginBottom: -20,
   },
   addButton: {
     width: 136,

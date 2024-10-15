@@ -6,3 +6,7 @@ const axiosInstance = axios.create({ baseURL: BASE_URL });
 export const getAllWater = async () => {
   return (await axiosInstance.get("water/")).data;
 };
+
+export const postWaterDetail = async (data) => {
+  await axiosInstance.post("waterCreate/", data);
+};
