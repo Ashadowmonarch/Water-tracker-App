@@ -7,3 +7,7 @@ from .serializers import WaterSerializer
 class WaterList(generics.ListAPIView):
     queryset = Water.objects.all()
     serializer_class = WaterSerializer
+
+class WaterCreate(generics.CreateAPIView):
+    queryset = Water.objects.all()
+    serializer_class = WaterSerializer
