@@ -1,4 +1,5 @@
 Water App
+
 Water App is a Django-based API project that allows users to manage water-related data. 
 The app is currently undergoing active development, with features being built for 
 managing user accounts and adding JWT-based authentication.
