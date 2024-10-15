@@ -1,2 +1,53 @@
+# For Django
+*.pyc
+__pycache__/
+db.sqlite3
+/media
+/staticfiles
+.env
+
+# Virtual environment
 venv/
+
+# For Node.js (React Native)
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+*.lock
+dist/
+.vite/
+
+# React Native specific files
+# Android
+android/
+*.apk
+*.aar
+*.ap_ 
+
+# iOS
+ios/
+*.mode1v3
+*.mode2v3
+*.pbxuser
+*.xccheckout
+*.xcworkspace
+!default.xcworkspace
+*.xcuserstate
+*.lock
+
+# Others
+*.log
+*.gradle
+.idea/
+*.iml
+*.hmap
+*.lock
+*.swp
+
+# MacOS-specific
 .DS_Store
+
+# Testing-related files
+coverage/
+*.lcov
