@@ -4,7 +4,9 @@ import React from "react";
 const AccountScreen = () => {
   return (
     <View style={styles.accountScreen}>
-      <Text>AccountScreen</Text>
+      <Text style={styles.accountScreenText}>
+        Working on adding account functionality
+      </Text>
     </View>
   );
 };
@@ -18,5 +20,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#2272BE",
+  },
+  accountScreenText: {
+    color: "#FFF",
   },
 });

@@ -10,3 +10,7 @@ export const getAllWater = async () => {
 export const postWaterDetail = async (data) => {
   await axiosInstance.post("waterCreate/", data);
 };
+
+export const deleteAllWater = async () => {
+  await axiosInstance.delete("waterDelete/");
+};
