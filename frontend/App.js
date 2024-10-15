@@ -5,7 +5,7 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 import HomeScreen from "./screens/HomeScreen";
 import AccountScreen from "./screens/AccountScreen";
 import SettingsScreen from "./screens/SettingsScreen";
-import ExploreScreen from "./screens/ExploreScreen";
+import AddScreen from "./screens/AddScreen";
 import { Image } from "react-native";
 import * as Font from "expo-font"; // Import expo-font to load custom fonts
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -79,7 +79,7 @@ export default function App() {
           })}
         >
           <Tab.Screen name="Home" component={HomeScreen} />
-          <Tab.Screen name="Add" component={ExploreScreen} />
+          <Tab.Screen name="Add" component={AddScreen} />
           <Tab.Screen name="Account" component={AccountScreen} />
           <Tab.Screen name="Settings" component={SettingsScreen} />
         </Tab.Navigator>
